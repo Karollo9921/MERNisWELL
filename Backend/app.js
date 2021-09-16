@@ -2,6 +2,9 @@
 import express from 'express';
 import { config } from 'dotenv';
 
+// import db connection
+import connectToMongoDB from './db/dbConnection.js';
+
 
 // creating and export App constructor
 class App {
@@ -10,7 +13,8 @@ class App {
         config();
         
         this.port = process.env.PORT || port;
-        
+        connectToMongoDB();
+
         this.useMiddlewares(middlewares);
         this.useRoutes(routes);
     };
