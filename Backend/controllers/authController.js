@@ -10,6 +10,13 @@ class AuthController {
     constructor() {
 
     }
+
+    // POST method (login a User)
+    async postLogin(req, res) {
+
+    }
+
+
     // POST method (register a User)
     async postRegister(req, res) {
         // let's declare the body 
@@ -24,32 +31,55 @@ class AuthController {
 
         // let's try to register User and save in Mongo database 
         try {
-            // protecting password 
-            const hashedPassword = await bcrypt.hash(password, 12);
-
+            
             // let's check if User already exists in database (if not, we create a new one user)
-            const user = await User.findOne({ $and: [{name: name}, {surname: surname}, {dateOfBirth: dateOfBirth}] });
+            const user = await User.findOne({ 
+                $and: 
+                [
+                    { name: name }, 
+                    { surname: surname }, 
+                    { dateOfBirth: dateOfBirth }
+                ] 
+            });
+            
+            // if user already exists we inform about this 
             if (user) {
                 return res.status(400).json({
+                    success: false,
+                    isLoggedIn: req.session.isLoggedIn,
                     message: "That User already exists !"
                 });
-            } else {
-                const newUser = new User({
-                    name: name,
-                    surname: surname,
-                    dateOfBirth: dateOfBirth,
-                    password: hashedPassword
-                });
-        
-                // saving a User in database 
-                await newUser.save();
+            };
+            
+            // protecting password 
+            const hashedPassword = await bcrypt.hash(password, 12);
+            const newUser = new User({
+                name: name,
+                surname: surname,
+                dateOfBirth: dateOfBirth,
+                password: hashedPassword
+            });
+    
+            // saving a User in database 
+            await newUser.save();
 
-                return res.status(201).json({
-                    message: "User has been created !"
-                }); 
-            }
+            // setting and saving a session 
+            req.session.isLoggedIn = true;
+            req.session.user = newUser;
+            req.session.save();
+
+            // returning json data about User logged in
+            return res.status(201).json({
+                success: true,
+                isLoggedIn: req.session.isLoggedIn,
+                user: req.session.user,
+                message: "User has been created !"
+            }); 
+            
         } catch (error) {
             return res.status(400).json({
+                success: false,
+                isLoggedIn: req.session.isLoggedIn,
                 message: `Error: ${error}`
             });
         }

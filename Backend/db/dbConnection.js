@@ -1,4 +1,18 @@
+// import libs 
 import mongoose from 'mongoose';
+import MongoDBStore  from 'connect-mongodb-session';
+import session from 'express-session';
+import { config } from 'dotenv';
+
+
+// declare where we will store our sessions 
+config();
+const MongoStore = MongoDBStore(session);
+const store = new MongoStore({
+    uri: process.env.MONGO_URI,
+    collection: 'sessions'
+});
+
 
 // connecting to MongoDB 
 const connectToMongoDB = async () => {
@@ -6,9 +20,7 @@ const connectToMongoDB = async () => {
     try {
         const connection = await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
-            // useFindAndModify: true,
             useUnifiedTopology: true,
-            // useCreateIndex: true,
           });
 
           console.log(`MongoDB Connected: ${connection.connection.host}`);
@@ -20,5 +32,6 @@ const connectToMongoDB = async () => {
 };
 
 
-// export function 
+// export function and session store
 export default connectToMongoDB;
+export { store };
