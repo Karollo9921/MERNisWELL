@@ -16,8 +16,61 @@ class AuthController {
 
     // POST method (login a User)
     async postLogin(req, res) {
+        // let's declare the body 
+        let { name, surname, dateOfBirth, password } = req.body;
 
-    }
+        // let's log in! 
+        try {
+            // let's check if User exists in database
+            let user = await User.findOne({
+                $and: 
+                    [
+                        { name: name }, 
+                        { surname: surname }, 
+                        { dateOfBirth: dateOfBirth }
+                    ] 
+            });
+
+            // if user does not exists we will send a user a message about that 
+            if (!user) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'This user does not exists in database',
+                    isLoggedIn: req.session.isLoggedIn
+                });
+            };
+
+            // User exists, so go log in
+            // Is the password correct 
+            let passwordCompare = await bcrypt.compare(password, user.password); // return true/false
+            if (passwordCompare) {
+                // setting and saving a session 
+                req.session.user = user;
+                req.session.isLoggedIn = true;
+                req.session.save();
+
+                return res.status(200).json({
+                    success: true,
+                    isLoggedIn: req.session.isLoggedIn,
+                    user: req.session.user,
+                    message: "User is logged in !"
+                }); 
+            } else {
+                return res.status(401).json({
+                    success: false,
+                    message: "Password do not match",
+                    isLoggedIn: req.session.isLoggedIn
+                })
+            }
+
+        } catch (error) {
+            return res.status(400).json({
+                success: false,
+                isLoggedIn: req.session.isLoggedIn,
+                message: `Error: ${error}`
+            });
+        }
+    };
 
 
     // POST method (register a User)
@@ -40,7 +93,7 @@ class AuthController {
         // let's try to register User and save in Mongo database 
         try {
             // let's check if User already exists in database (if not, we create a new one user)
-            const user = await User.findOne({ 
+            var user = await User.findOne({ 
                 $and: 
                 [
                     { name: name }, 
