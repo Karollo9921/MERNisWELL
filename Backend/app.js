@@ -8,12 +8,12 @@ import connectToMongoDB from './db/dbConnection.js';
 
 // creating and export App constructor
 class App {
-    constructor(port, middlewares, routes) {
+    constructor(middlewares, routes) {
         this.app = express();
         config();
         
-        this.port = process.env.PORT || port;
-        
+        this.port = process.env.PORT || 3000;
+
         connectToMongoDB();
 
         this.useMiddlewares(middlewares);

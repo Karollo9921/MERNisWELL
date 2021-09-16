@@ -15,7 +15,6 @@ import { AuthRoute } from './routes/authRoute.js';
 
 // initializing an App
 const app = new App(
-    2000,
     [
         express.json(),
         session({

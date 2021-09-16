@@ -13,7 +13,6 @@ const store = new MongoStore({
     collection: 'sessions'
 });
 
-
 // connecting to MongoDB 
 const connectToMongoDB = async () => {
     // declare a connection 
