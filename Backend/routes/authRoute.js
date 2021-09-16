@@ -14,6 +14,7 @@ class AuthRoute {
 
     runRoutes() {
         this.router.post('/register', new AuthController().postRegister);
+        this.router.get('/login', new AuthController().getLogin);
         this.router.post('/login', new AuthController().postLogin);
         this.router.post('/logout', new AuthController().postLogout);
     }

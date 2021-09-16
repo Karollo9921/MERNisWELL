@@ -16,8 +16,10 @@ class AuthController {
 
     // GET Login page 
     getLogin(req, res) {
-        
-    }
+        return res.json({
+            isLoggedIn: req.session?.isLoggedIn || false
+        });   
+    };
 
     // POST method (login a User)
     async postLogin(req, res) {
@@ -92,6 +94,13 @@ class AuthController {
                 isLoggedIn: req.session?.isLoggedIn || false
             });
         })
+    };
+
+    // GET Register Page 
+    getRegister(req, res) {
+        return res.json({
+            isLoggedIn: req.session?.isLoggedIn || false
+        });
     };
 
     // POST method (register a User)
