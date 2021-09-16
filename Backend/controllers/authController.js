@@ -14,6 +14,11 @@ class AuthController {
 
     }
 
+    // GET Login page 
+    getLogin(req, res) {
+        
+    }
+
     // POST method (login a User)
     async postLogin(req, res) {
         // let's declare the body 
@@ -72,6 +77,22 @@ class AuthController {
         }
     };
 
+    // POST Logout 
+    postLogout(req, res) {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(404).json({
+                    message: `Error: ${err}`
+                });
+            }
+
+            // after destroy session - send message to Client 
+            return res.status(200).json({
+                success: true,
+                isLoggedIn: req.session?.isLoggedIn || false
+            });
+        })
+    };
 
     // POST method (register a User)
     async postRegister(req, res) {
