@@ -4,6 +4,9 @@ import User from '../models/User.js'
 // import libs
 import bcrypt from 'bcrypt';
 
+// import validation function 
+import validate from '../utilities/validationUserRegisterData.js'
+
 
 // creating Controller of the Auth constructor
 class AuthController {
@@ -22,16 +25,20 @@ class AuthController {
         // let's declare the body 
         let { name, surname, dateOfBirth, password, password2 } = req.body;
 
-        // checking if password confirmation match 
-        if (password !== password2) {
+        // let's check if the data entered by the user is correct
+        let validationMessage = validate(name, surname, dateOfBirth, password, password2);
+
+        // if validation failed we will send a message to user what is wrong
+        if (validationMessage) {
             return res.status(400).json({
-                message: "Password do not match !"
+                success: false,
+                message: validationMessage,
+                isLoggedIn: req.session.isLoggedIn
             });
         }
 
         // let's try to register User and save in Mongo database 
         try {
-            
             // let's check if User already exists in database (if not, we create a new one user)
             const user = await User.findOne({ 
                 $and: 

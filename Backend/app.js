@@ -13,6 +13,7 @@ class App {
         config();
         
         this.port = process.env.PORT || port;
+        
         connectToMongoDB();
 
         this.useMiddlewares(middlewares);
