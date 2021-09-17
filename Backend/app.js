@@ -30,8 +30,14 @@ class App {
     // we will use routes in the constructor
     useRoutes(routes) {
         routes.forEach(route => {
-            this.app.use('/', route.router);
+            this.app.use('/', this.allowCrossDomain, route.router);
         });
+    };
+
+    // set headers 
+    allowCrossDomain(req, res, next) {
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        next();
     };
 
     // listen the server

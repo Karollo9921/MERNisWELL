@@ -40,7 +40,7 @@ class AuthController {
 
             // if user does not exists we will send a user a message about that 
             if (!user) {
-                return res.status(400).json({
+                return res.status(401).json({
                     success: false,
                     message: 'This user does not exists in database',
                     isLoggedIn: req.session.isLoggedIn
@@ -71,7 +71,7 @@ class AuthController {
             }
 
         } catch (error) {
-            return res.status(400).json({
+            return res.status(401).json({
                 success: false,
                 isLoggedIn: req.session.isLoggedIn,
                 message: `Error: ${error}`
