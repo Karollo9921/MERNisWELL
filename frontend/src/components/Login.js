@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function Login() {
+function Login(props) {
   const [ name, setName ] = useState('');
   const [ surname, setSurname ] = useState('');
   const [ dateOfBirth, setDateOfBirth ] = useState('');
@@ -27,7 +27,7 @@ function Login() {
         </div>
         <div>
           <div>
-            <p>Don't have an account? <span>Register</span></p>
+          <p>Don't have an account? <span onClick={props.renderRegister}>Register</span></p>
           </div>
           <button>Login</button>
         </div>

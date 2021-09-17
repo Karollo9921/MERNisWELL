@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function Register() {
+function Register(props) {
   const [ name, setName ] = useState('');
   const [ surname, setSurname ] = useState('');
   const [ dateOfBirth, setDateOfBirth ] = useState('');
@@ -27,8 +27,12 @@ function Register() {
           <input onChange={(e) => setPassword(e.target.value)} type="password" />
         </div>
         <div>
+          <label>Confirm Password: </label>
+          <input onChange={(e) => setConfirnPassword(e.target.value)} type="confirnPassword" />
+        </div>
+        <div>
           <div>
-            <p>Have an account? <span>Login</span></p>
+            <p>Have an account? <span onClick={props.renderLogin}>Login</span></p>
           </div>
           <button>Register</button>
         </div>
@@ -36,4 +40,4 @@ function Register() {
     )
 }
 
-export default Login;
+export default Register;

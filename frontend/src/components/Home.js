@@ -6,13 +6,14 @@ import Register from './Register';
 
 
 function Home() {
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  const [ hasAccount, sethasAccount ] = useState(false);
+
+  console.log(hasAccount);
 
   return (
     <div className="container">
       <div className="auth-window">
-        { isLoggedIn && <Register /> || <Login /> }
-        
+        {hasAccount && <Login renderRegister={() => sethasAccount(false)} /> || <Register renderLogin={() => sethasAccount(true)} />}
       </div>
     </div>
   );
