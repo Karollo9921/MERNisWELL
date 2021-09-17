@@ -6,7 +6,10 @@ class HomeController {
 
     // GET method
     getHome(req, res) {
-        res.send('<h1>Hello World !</h1>')
+        return res.json({
+            isLoggedIn: req.session?.isLoggedIn || false,
+            user: req.session?.user || null
+        });   
     }
 }
 
