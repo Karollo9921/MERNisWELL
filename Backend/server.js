@@ -1,5 +1,5 @@
 // import App constructor
-import { App } from './app';
+import { App } from './app.js';
 
 // import declared place to store sessions 
 import { store } from './db/dbConnection.js';
