@@ -14,13 +14,14 @@ class App {
         this.app.set('trust proxy', 1);
         config();
         
+        this.buildFrontendOnProd();
+        
         this.port = process.env.PORT || 3000;
         
         connectToMongoDB();
         
         this.useMiddlewares(middlewares);
         this.useRoutes(routes);
-        this.buildFrontendOnProd();
     };
     
     // we will use middlewares in the constructor
