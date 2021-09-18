@@ -1,5 +1,6 @@
 // import libs
 import express from 'express';
+import path from 'path'
 import { config } from 'dotenv';
 
 // import db connection
@@ -12,11 +13,12 @@ class App {
         config();
         
         this.port = process.env.PORT || 3000;
-
+        
         connectToMongoDB();
-
+        
         this.useMiddlewares(middlewares);
         this.useRoutes(routes);
+        this.buildFrontendOnProd();
     };
     
     // we will use middlewares in the constructor
@@ -38,6 +40,21 @@ class App {
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     };
+
+    // build fronted after deploy 
+    buildFrontendOnProd() {
+        if (process.env.NODE_ENV === 'production') {
+            this.app.use(express.static(path.join(__dirname, '/frontend/build')));
+    
+            this.app.get('*', (req, res) =>
+              res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+            );
+          } else {
+            this.app.get('/', (req, res) => {
+              res.send('API is running....');
+            })
+          }
+    }
 
     // listen the server
     listen() { 
