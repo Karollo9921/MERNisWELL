@@ -1,7 +1,8 @@
 // import libs
 import express from 'express';
-import path from 'path'
 import { config } from 'dotenv';
+import path from 'path';
+const __dirname = path.resolve();
 
 // import db connection
 import connectToMongoDB from './db/dbConnection.js';
