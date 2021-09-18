@@ -13,7 +13,7 @@ class HomeRoute {
 
     // executing our Route 
     runRoutes() {
-        this.router.get('/', new HomeController().getHome)
+        this.router.get('/home', new HomeController().getHome)
     }
 }
 
