@@ -1,12 +1,10 @@
 //import component
-import Navbar from '../components/Navbar';
+import NavbarAndGreeting from '../components/NavbarAndGreeting';
 
 // creating a root page
 function Home() {
   return (
-    <div>
-      <Navbar />
-    </div>
+      <NavbarAndGreeting />
   );
 }
 

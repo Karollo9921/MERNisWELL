@@ -6,7 +6,7 @@ function LoginOrRegister() {
   return (
     <div>
       <Link to="/login" className="login-register">Login</Link>
-      <Link to="/register" className="btn login-register">Register</Link>
+      <Link to="/register" className="btn-home login-register">Register</Link>
     </div>
   );
 };

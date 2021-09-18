@@ -7,7 +7,7 @@ import Logout from './buttons/Logout';
 import LoginOrRegister from './buttons/LoginOrRegister';
 
 // creating Navbar component 
-function Navbar() {
+function NavbarAndGreeting() {
 
   // we want to know which buttons display on the screen 
   const [ isLoggedIn, setisLoggedIn ] = useState(false);
@@ -38,12 +38,10 @@ function Navbar() {
   getIsLoggedIn();
 
   return (
-    <div>
-      <div className="container">
+    <div className="container">
+      <div>
         <nav className="navbar">
-          <div className="nav-links">
-            { isLoggedIn ? <Logout /> : <LoginOrRegister /> }
-          </div> 
+          { isLoggedIn ? <Logout /> : <LoginOrRegister /> }
         </nav>
       </div>
       { isLoggedIn ? <h1>Hello {userName}! You are logged in !</h1> : null }
@@ -51,4 +49,4 @@ function Navbar() {
   );
 };
 
-export default Navbar;
+export default NavbarAndGreeting;

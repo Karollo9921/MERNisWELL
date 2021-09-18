@@ -25,7 +25,7 @@ function Logout() {
 
   return (
     <div>
-      <button onClick={(e) => submitLogout(e)}>
+      <button onClick={(e) => submitLogout(e)} className="btn-home login-register">
         Logout
       </button>
     </div>

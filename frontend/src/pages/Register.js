@@ -48,33 +48,37 @@ function Register() {
   }
 
     return (
-      <div>
-        <p id="error-message"></p>
-        <div>
-          <label>Name: </label>
-          <input onChange={(e) => setName(e.target.value)} type="text" />
-        </div>
-        <div>
-          <label>Surname: </label>
-          <input onChange={(e) => setSurname(e.target.value)} type="text" />
-        </div>
-        <div>
-          <label>Date Of Birth: </label>
-          <input onChange={(e) => setDateOfBirth(e.target.value)} type="date" />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input onChange={(e) => setPassword(e.target.value)} type="password" />
-        </div>
-        <div>
-          <label>Confirm Password: </label>
-          <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" />
-        </div>
-        <div>
+      <div className="container-login-register">
+        <div className="container-form">
+          <p id="error-message"></p>
           <div>
-            <p>Have an account? <Link to="/login" className="login-register">Login</Link></p>
+            <label>Name: </label>
+            <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name" />
           </div>
-          <button onClick={(e) => submitRegister(e)}>Register</button>
+          <div>
+            <label>Surname: </label>
+            <input onChange={(e) => setSurname(e.target.value)} type="text" placeholder="Surname" />
+          </div>
+          <div>
+            <label>Date Of Birth: </label>
+            <input onChange={(e) => setDateOfBirth(e.target.value)} type="date" placeholder="Date Of Birth" />
+          </div>
+          <div>
+            <label>Password: </label>
+            <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+          </div>
+          <div>
+            <label>Confirm Password: </label>
+            <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
+          </div>
+          <div className="buttons">
+            <div>
+              <p>Have an account? <Link to="/login" className="btn login-register">Login</Link></p>
+            </div>
+            <div className="button">
+              <button onClick={(e) => submitRegister(e)}>Submit Register</button>
+            </div>
+          </div>
         </div>
       </div>
     )

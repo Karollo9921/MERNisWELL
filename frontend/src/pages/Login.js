@@ -46,29 +46,33 @@ function Login() {
   }
 
     return (
-      <div>
-        <p id="error-message"></p>
-        <div>
-          <label>Name: </label>
-          <input onChange={(e) => setName(e.target.value)} type="text" />
-        </div>
-        <div>
-          <label>Surname: </label>
-          <input onChange={(e) => setSurname(e.target.value)} type="text" />
-        </div>
-        <div>
-          <label>Date Of Birth: </label>
-          <input onChange={(e) => setDateOfBirth(e.target.value)} type="date" />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input onChange={(e) => setPassword(e.target.value)} type="password" />
-        </div>
-        <div>
+      <div className="container-login-register">
+        <div className="container-form">
+          <p id="error-message"></p>
           <div>
-          <p>Don't have an account? <Link to="/register" className="btn login-register">Register</Link></p>
+            <label>Name: </label>
+            <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name"/>
           </div>
-          <button onClick={(e) => submitLogin(e)}>Login</button>
+          <div>
+            <label>Surname: </label>
+            <input onChange={(e) => setSurname(e.target.value)} type="text" placeholder="Surname" />
+          </div>
+          <div>
+            <label>Date Of Birth: </label>
+            <input onChange={(e) => setDateOfBirth(e.target.value)} type="date" placeholder="Date Of Birth" />
+          </div>
+          <div>
+            <label>Password: </label>
+            <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+          </div>
+          <div className="buttons">
+            <div>
+              <p>Don't have an account? <Link to="/register" className="btn login-register">Register</Link></p>
+            </div>
+            <div className="button">
+              <button onClick={(e) => submitLogin(e)}>Submit Login</button>
+            </div>
+          </div>
         </div>
       </div>
     )
