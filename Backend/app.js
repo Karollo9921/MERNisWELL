@@ -34,7 +34,7 @@ class App {
     // we will use routes in the constructor
     useRoutes(routes) {
         routes.forEach(route => {
-            this.app.use('/', this.allowCrossDomain, route.router);
+            this.app.use('/api', this.allowCrossDomain, route.router);
         });
     };
 
