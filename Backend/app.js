@@ -10,6 +10,7 @@ import connectToMongoDB from './db/dbConnection.js';
 class App {
     constructor(middlewares, routes) {
         this.app = express();
+        this.app.set('trust proxy', 1);
         config();
         
         this.port = process.env.PORT || 3000;

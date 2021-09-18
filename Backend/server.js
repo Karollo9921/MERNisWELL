@@ -26,10 +26,10 @@ const app = new App(
         session({
             secret: 'secret', 
             resave: false, 
-            saveUninitialized: false,
+            saveUninitialized: true,
             store: store,
             cookie: {
-                httpOnly: false
+                secure: true
             }
         })
     ],
