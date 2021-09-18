@@ -16,7 +16,7 @@ function NavbarAndGreeting() {
   // we GET data from server if User is Logged In 
   async function getIsLoggedIn() {
     try {
-      const responseFromServer = await axios.get('http://localhost:5000/', {
+      const responseFromServer = await axios.get('https://mern-is-well.herokuapp.com/', {
         headers: {
           'Content-Type': 'application/json'
         },

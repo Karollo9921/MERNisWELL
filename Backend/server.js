@@ -17,7 +17,7 @@ import { AuthRoute } from './routes/authRoute.js';
 const app = new App(
     [
         cors({ 
-            origin: "http://localhost:3000",
+            origin: "https://mern-is-well.herokuapp.com",
             methods: '*',
             credentials: true 
         }),
@@ -27,7 +27,10 @@ const app = new App(
             secret: 'secret', 
             resave: false, 
             saveUninitialized: false,
-            store: store
+            store: store,
+            cookie: {
+                httpOnly: false
+            }
         })
     ],
     [ 
