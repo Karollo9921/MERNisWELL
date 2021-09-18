@@ -16,13 +16,14 @@ function NavbarAndGreeting() {
   // we GET data from server if User is Logged In 
   async function getIsLoggedIn() {
     try {
-      const responseFromServer = await axios.get('https://mern-is-well.herokuapp.com/', {
+      const responseFromServer = await axios.get('https://mern-is-well.herokuapp.com', {
         headers: {
           'Content-Type': 'application/json'
         },
         withCredentials: true
       });
 
+      console.log(responseFromServer);
       // if User is Logged In we set isLoggedIn variable to true and userName variable to User's name
       if (responseFromServer.data.isLoggedIn) { 
         setisLoggedIn(true)
