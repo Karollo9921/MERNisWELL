@@ -2,7 +2,7 @@
 import { Router } from 'express';
 
 // import Controller 
-import { AuthController } from '../controllers/AuthController.js';
+import { AuthController } from '../controllers/authController.js';
 
 // creating Route constructor
 class AuthRoute {

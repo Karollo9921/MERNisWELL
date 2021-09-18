@@ -2,7 +2,7 @@
 import { Router } from 'express';
 
 // import Controller 
-import { HomeController } from '../controllers/HomeController.js';
+import { HomeController } from '../controllers/homeController.js';
 
 // creating Route constructor
 class HomeRoute {
