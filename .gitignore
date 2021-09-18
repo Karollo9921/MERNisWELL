@@ -6,3 +6,6 @@ node_modules
 
 #testing routes file
 request.rest
+
+# production
+/frontend/build

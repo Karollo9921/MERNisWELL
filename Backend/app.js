@@ -54,7 +54,7 @@ class App {
               res.send('API is running....');
             })
           }
-    }
+    };
 
     // listen the server
     listen() { 
