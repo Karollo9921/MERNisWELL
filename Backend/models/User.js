@@ -1,6 +1,8 @@
+// import mongoose
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
 
+// declare MongoDB Schema
+const Schema = mongoose.Schema;
 
 // create a User Schema Model
 const userSchema = new Schema({
@@ -9,7 +11,6 @@ const userSchema = new Schema({
     dateOfBirth: { type: Date, required: true },
     password: { type: String, required: true }
 });
-
 
 //export User Schema
 export default mongoose.model('User', userSchema);

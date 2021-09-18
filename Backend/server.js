@@ -13,7 +13,6 @@ import cors from 'cors';
 import { HomeRoute } from './routes/homeRoute.js';
 import { AuthRoute } from './routes/authRoute.js';
 
-
 // initializing an App
 const app = new App(
     [
@@ -36,7 +35,6 @@ const app = new App(
         new AuthRoute(),
     ]
 );
-
 
 // running our server
 app.listen();

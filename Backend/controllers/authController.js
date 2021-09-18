@@ -7,7 +7,6 @@ import bcrypt from 'bcrypt';
 // import validation function 
 import validate from '../utilities/validationUserRegisterData.js'
 
-
 // creating Controller of the Auth constructor
 class AuthController {
     constructor() {
@@ -175,7 +174,6 @@ class AuthController {
         }
     };
 };
-
 
 // exporting Controller 
 export { AuthController };

@@ -13,6 +13,5 @@ class HomeController {
     }
 }
 
-
 // exporting Controller 
 export { HomeController };

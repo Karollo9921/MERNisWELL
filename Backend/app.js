@@ -5,7 +5,6 @@ import { config } from 'dotenv';
 // import db connection
 import connectToMongoDB from './db/dbConnection.js';
 
-
 // creating and export App constructor
 class App {
     constructor(middlewares, routes) {
@@ -47,7 +46,6 @@ class App {
         })
     };
 };
-
 
 // we export the constructor
 export { App };

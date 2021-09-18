@@ -4,7 +4,6 @@ import { Router } from 'express';
 // import Controller 
 import { HomeController } from '../controllers/HomeController.js';
 
-
 // creating Route constructor
 class HomeRoute {
     constructor() {
@@ -12,11 +11,11 @@ class HomeRoute {
         this.runRoutes();
     }
 
+    // executing our Route 
     runRoutes() {
         this.router.get('/', new HomeController().getHome)
     }
 }
-
 
 // exporting Route 
 export { HomeRoute };

@@ -13,4 +13,3 @@ export default function validate(name, surname, dateOfBirth, password, password2
     if (Date.now() - Date.parse(dateOfBirth) > 5544838760430) return 'Are you really over 150?';
     return '';
 }
-

@@ -4,7 +4,6 @@ import MongoDBStore  from 'connect-mongodb-session';
 import session from 'express-session';
 import { config } from 'dotenv';
 
-
 // declare where we will store our sessions 
 config();
 const MongoStore = MongoDBStore(session);
@@ -29,7 +28,6 @@ const connectToMongoDB = async () => {
         process.exit(1);
     };
 };
-
 
 // export function and session store
 export default connectToMongoDB;

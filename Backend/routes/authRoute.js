@@ -4,7 +4,6 @@ import { Router } from 'express';
 // import Controller 
 import { AuthController } from '../controllers/AuthController.js';
 
-
 // creating Route constructor
 class AuthRoute {
     constructor() {
@@ -12,6 +11,7 @@ class AuthRoute {
         this.runRoutes();
     }
 
+    // executing our Routes 
     runRoutes() {
         this.router.post('/register', new AuthController().postRegister);
         this.router.get('/login', new AuthController().getLogin);
@@ -19,7 +19,6 @@ class AuthRoute {
         this.router.post('/logout', new AuthController().postLogout);
     }
 }
-
 
 // exporting Route 
 export { AuthRoute };
