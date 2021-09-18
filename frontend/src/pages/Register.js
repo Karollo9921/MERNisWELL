@@ -16,7 +16,7 @@ function Register() {
   async function submitRegister(e) {
     e.preventDefault();
     try {
-      const responseFromServer = await axios.post('https://mern-is-well.herokuapp.com/register', {
+      const responseFromServer = await axios.post('https://mern-is-well.herokuapp.com/api/register', {
         name: name,
         surname: surname,
         dateOfBirth: dateOfBirth,

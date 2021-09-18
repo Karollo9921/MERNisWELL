@@ -8,7 +8,7 @@ function Logout() {
   async function submitLogout(e) {
     e.preventDefault();
     try {
-      await axios.post('https://mern-is-well.herokuapp.com/logout', { }, {
+      await axios.post('https://mern-is-well.herokuapp.com/api/logout', { }, {
         headers: {
           'Content-Type': 'application/json'
         },

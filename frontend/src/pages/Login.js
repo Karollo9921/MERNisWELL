@@ -15,7 +15,7 @@ function Login() {
   async function submitLogin(e) {
     e.preventDefault(e);
     try {
-      const responseFromServer = await axios.post('https://mern-is-well.herokuapp.com/login', {
+      const responseFromServer = await axios.post('https://mern-is-well.herokuapp.com/api/login', {
         name: name,
         surname: surname,
         dateOfBirth: dateOfBirth,
